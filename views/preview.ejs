@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' id='next' href='/stylesheets/style.css' />
+	<script src = "/javascripts/preview.js"></script>
+</head>
+  <body>
+  <table style="width:100%">
+	  <tr style = "text-align: left">
+	    <th>Title</th>
+	    <th>Body</th> 
+	  </tr>
+	  <% for (let p of posts) { %>
+		  	<tr>
+		    	<td><%- p.title %></td>
+		    	<td><%- p.body %></td> 
+		  	</tr>
+	  <% } %>
+  </table>
+  <% var url = "/blog/" + username + "?start=" + start; %>
+			<a href= <%= url%> id = "next">Next Page</a>
+	 
+  </body>
+</html>
