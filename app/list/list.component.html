@@ -1,0 +1,22 @@
+<div *ngIf="blogService.posts">
+<div class="row" >
+<div class="col-xs-12">
+    <button class="btn btn-success" (click)="addPost()">New post</button>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="list-group" id="postlist">
+      <li style="cursor: pointer;" class="list-group-item" *ngFor="let post of blogService.posts;">
+        <a [routerLink]="['edit', post.postid]" routerLinkActive="active" style="text-decoration: none;">
+          <div class="pull-left">
+            <h4 class="list-group-item-heading">{{ post.title }}</h4>
+            <p class="list-group-item-text">{{ post.created | date:'M/d/yyyy, h:mm:ss a' }}</p>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>

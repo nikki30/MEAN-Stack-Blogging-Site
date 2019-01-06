@@ -1,0 +1,30 @@
+<div *ngIf="selectedPost">
+
+  <form #f="ngForm" novalidate>
+    <!-- we will place our fields here -->
+
+    <!--name-->
+    <div class="form-group">
+      <label for="title">Title</label>
+      <!--bind name to ngModel, it's required with minimum 5 characters-->
+      <input class="form-control" type="text" name="title" [(ngModel)]="selectedPost.title" #title="ngModel" required (keyup)="savePost()"
+        placeholder="Title">
+      <!--show error only when field is not valid & it's dirty or form submited-->
+      <small [hidden]="title.valid || (title.pristine && !f.submitted)">
+        <!--Check if title is present-->
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="body">Body</label>
+      <textarea class="form-control" id="body" type="text" name="body" #body = "ngModel" [(ngModel)]="selectedPost.body" required rows="3" (keyup)="savePost()"
+        placeholder="Body"></textarea>
+    </div>
+    <p class="list-group-item-text">Last Modified: {{ selectedPost.modified | date:'M/d/yy, h:mm:ss a'}}</p>
+    <button class="btn btn-success" [disabled]="title.pristine && body.pristine" (click)="saveButtonPost()" style="margin:3px;">Save</button>
+    <button class="btn btn-secondary" [routerLink]="['../../preview', selectedPost.postid]" style="margin:3px;">Preview</button>
+    <button class="btn btn-danger" (click)="deletePost()" style="margin:3px;">Delete</button>
+  </form>
+
+
+</div>

@@ -1,0 +1,10 @@
+<div *ngIf="selectedPost">
+
+<button class="btn btn-success" (click) = "editButton()">Edit</button>
+
+<div>
+<div class="contain" [innerHTML]="htmlTitle" ></div>
+<div class="contain" [innerHTML]="htmlBody" ></div>
+<p class="list-group-item-text">Last Modified: {{ selectedPost.modified | date:'M/d/yy, h:mm:ss a'}}</p>
+</div>
+</div>
